@@ -9,8 +9,11 @@ RUN apt-get update \
       && apt-get install -y libltdl7 \
       && rm -rf /var/lib/apt/lists/*
 RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
- 
+
+#COPY jobconfig.xml $JENKINS_HOME/jobs/cdb/config.xml
+
 USER jenkins
+COPY jobconfig.xml $JENKINS_HOME/jobs/cdb/config.xml
 
 # Install plugins in Jenkins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
