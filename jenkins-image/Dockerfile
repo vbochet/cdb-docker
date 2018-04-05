@@ -14,6 +14,7 @@ RUN echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers
 
 USER jenkins
 COPY jobconfig.xml $JENKINS_HOME/jobs/cdb/config.xml
+COPY webapp-image/ /home/webapp-image/
 
 # Install plugins in Jenkins
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt

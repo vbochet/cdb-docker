@@ -10,4 +10,9 @@ result=$?
 if [[ $result -ne 0 ]] ; then 
   echo "Test failure"; exit $result 
 fi
-echo End of build sequence
+mvn package
+result=$?
+if [[ $result -ne 0 ]] ; then
+  echo "Packaging failure"; exit $result
+fi
+mv target/*.war target/cdb.war
