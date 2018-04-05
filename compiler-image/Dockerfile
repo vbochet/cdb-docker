@@ -19,3 +19,5 @@ RUN apt-get install git -y && \
 RUN java -version && \
     mvn --version && \
     git --version
+
+COPY script.sh /var/script.sh
