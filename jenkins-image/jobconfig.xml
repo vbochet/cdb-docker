@@ -34,9 +34,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>sudo docker exec compiler-cdb-instance /var/script.sh
+      <command>sudo docker login -u $(cat /home/dockerUsername) -p $(cat /home/dockerPassword)
+sudo docker exec compiler-cdb-instance /var/script.sh
 sudo docker cp compiler-cdb-instance:/home/computer-database/target/cdb.war /home/webapp-image/ROOT.war
-sudo docker build -t webapp-cdb:latest /home/webapp-image</command>
+sudo docker build -t vbochetexcilys/computer-database:latest /home/webapp-image
+sudo docker push vbochetexcilys/computer-database:latest
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
